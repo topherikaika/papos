@@ -9,3 +9,5 @@ app.get("/", (req, res) => {
 app.get("/admin", (req, res) => {
   res.send("Welcome to the Admin page");
 });
+
+app.listen(3000);
