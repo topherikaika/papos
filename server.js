@@ -15,9 +15,9 @@ app.get("/admin", (req, res) => {
 });
 
 async function start() {
-  const client = new MongoClient(uri);
-  await client.connect();
-  db = client.db();
+  const cloud = new MongoClient(uri);
+  await cloud.connect();
+  db = cloud.db();
   app.listen(8080);
 }
 start();
