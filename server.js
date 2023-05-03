@@ -1,13 +1,17 @@
+const { MongoClient } = require("mongodb");
 const express = require("express");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the Homepage");
+app.get("/", async (req, res) => {
+  console.log("Welcome to the Homepage");
 });
 
 app.get("/admin", (req, res) => {
   res.send("Welcome to the Admin page");
 });
 
-app.listen(3000);
+async function start() {
+  const client = new MongoClient();
+}
+start();
