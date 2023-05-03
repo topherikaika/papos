@@ -4,6 +4,7 @@ let db;
 const app = express();
 
 app.get("/", async (req, res) => {
+  const allRecipes = db.collection("recipes").find().toArray();
   console.log("Welcome to the Homepage");
 });
 
