@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 const express = require("express");
-
+let db;
 const app = express();
 
 app.get("/", async (req, res) => {
@@ -13,5 +13,7 @@ app.get("/admin", (req, res) => {
 
 async function start() {
   const client = new MongoClient();
+  await client.connect();
+  db = client.db();
 }
 start();
