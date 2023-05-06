@@ -18,6 +18,7 @@ function App() {
 
   return (
     <div className="container">
+      <h1>ADMIN</h1>
       <p>
         <a href="/">&laquo; Back to homepage</a>
       </p>

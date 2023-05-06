@@ -70,6 +70,8 @@ app.post("/update-recipe", upload.single("photo"), ourCleanup, async (req, res) 
     res.send(photofilename);
   } else {
     //if not uploading photo
+    db.collection("recipes").findOneAndUpdate({ _id: new ObjectId(req.body._id) }, { $set: req.cleanData });
+    res.send(false);
   }
 });
 

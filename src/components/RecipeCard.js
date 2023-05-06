@@ -5,7 +5,7 @@ function RecipeCard(props) {
   const [isEditing, setIsEditing] = useState(false);
   const [draftName, setDraftName] = useState("");
   const [file, setFile] = useState();
-  const [draftTypes, setDraftTypes] = useState("");
+  const [draftType, setDraftType] = useState("");
 
   async function submitHandler(e) {
     e.preventDefault();
