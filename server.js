@@ -36,6 +36,11 @@ app.get("/api/recipes", async (req, res) => {
 });
 
 app.post("/create-recipe", upload.single("photo"), ourCleanup, async (req, res) => {
+  if (req.file) {
+    const photofilename = `${Date.now()}.jpg`;
+    await sharp(req.file.buffer).resize(844, 456).jpeg({ quality: 60 }.toFile(path.join("public", "uploaded-photos", photofilename)));
+    req.cleanData.photo = photofilename;
+  }
   console.log(req.body);
   const info = await db.collection("recipes").insertOne(req.cleanData);
   const newRecipe = await db.collection("recipes").findOne({ _id: new ObjectId(info.insertedId) });
