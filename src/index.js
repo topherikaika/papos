@@ -12,9 +12,10 @@ function App() {
     }
     go();
   }, []);
+
   return (
     <div>
-      <h1>Hey</h1>
+      <h1>HEY</h1>
       <p>This is REACT</p>
       {recipes.map(function (recipe) {
         return <RecipeCard name={recipe.name} type={recipe.type} />;
@@ -24,10 +25,11 @@ function App() {
 }
 
 function RecipeCard(props) {
-  return;
-  <p>
-    {props.name} e {props.type}
-  </p>;
+  return (
+    <p>
+      Isto e {props.name} e {props.type}
+    </p>
+  );
 }
 
 const root = createRoot(document.querySelector("#app"));
