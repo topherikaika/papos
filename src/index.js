@@ -9,3 +9,6 @@ function App() {
     </div>
   );
 }
+
+const root = createRoot(document.querySelector("#app"));
+root.render(<App />);
