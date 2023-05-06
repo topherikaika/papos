@@ -28,7 +28,7 @@ app.get("/api/recipes", async (req, res) => {
   res.json(allRecipes);
 });
 
-app.post("/create-recipe", async (req, res) => {
+app.post("/create-recipe", upload.single("photo"), async (req, res) => {
   console.log(req.body);
   res.send("Thank you");
 });
