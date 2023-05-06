@@ -7,7 +7,7 @@ const app = express();
 app.get("/", async (req, res) => {
   const allRecipes = await db.collection("recipes").find().toArray();
   console.log(allRecipes);
-  res.send("Welcome to the Homepage");
+  res.send(`<h1>Benvido a paxina principal</h1> ${allRecipes.map(recipe => `<p>${recipe.name} - ${recipe.type}</p>`).join("")}`);
 });
 
 app.get("/admin", (req, res) => {
