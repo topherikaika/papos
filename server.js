@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb");
 const express = require("express");
 let db;
-const uri = "mongodb+srv://memorias:memorias123@cluster0.kohzkj0.mongodb.net/papos?retryWrites=true&w=majority";
+const uri = "mongodb+srv://memorias:memorias123@cluster0.kohzkj0.mongodb.net/papos?retryWrites=true&w=majority&authSource=admin";
 const app = express();
 
 app.get("/", async (req, res) => {
