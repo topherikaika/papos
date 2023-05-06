@@ -1,4 +1,4 @@
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 const express = require("express");
 let db;
 const uri = "mongodb+srv://memorias:memorias123@cluster0.kohzkj0.mongodb.net/papos?retryWrites=true&w=majority&authSource=admin";
@@ -31,7 +31,9 @@ app.get("/api/recipes", async (req, res) => {
 
 app.post("/create-recipe", upload.single("photo"), ourCleanup, async (req, res) => {
   console.log(req.body);
-  res.send("Thank you");
+  const info = await db.collection("recipes").insertOne(req.cleanData);
+  const newRecipe = await db.collection("recipes").findOne({ _id: new ObjectId(info.insertedId) });
+  res.send(newRecipe);
 });
 
 function ourCleanup(req, res, next) {
