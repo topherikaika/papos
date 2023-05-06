@@ -9,7 +9,7 @@ app.set("views", "./views");
 app.get("/", async (req, res) => {
   const allRecipes = await db.collection("recipes").find().toArray();
   console.log(allRecipes);
-  res.send(`<h1>Benvido a paxina principal</h1> ${allRecipes.map(recipe => `<p>${recipe.name} - ${recipe.type}</p>`).join("")}`);
+  res.render("home");
 });
 
 app.get("/admin", (req, res) => {
