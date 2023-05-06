@@ -22,7 +22,7 @@ function App() {
         <a href="/">&laquo; Back to homepage</a>
       </p>
       <CreateNewForm setRecipes={setRecipes} />
-      <div className="animal-grid">
+      <div className="recipe-grid">
         {recipes.map(function (recipe) {
           return <RecipeCard key={recipe._id} name={recipe.name} type={recipe.type} photo={recipe.photo} id={recipe._id} setRecipes={setRecipes} />;
         })}
