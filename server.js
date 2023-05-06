@@ -25,8 +25,19 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get("/", async (req, res) => {
   const allRecipes = await db.collection("recipes").find().toArray();
-  console.log(allRecipes);
-  res.render("home", { allRecipes });
+  const generatedHTML = ReactDOMServer.renderToString(
+    <div className="container">
+      <div className="recipe-grid mb-3">
+        {allRecipes.map(recipe => {
+          <RecipeCard key={recipe._id} name={recipe.name} type={recipe.type} photo={recipe.photo} id={recipe._id} readOnly={true} />;
+        })}
+      </div>
+      <p>
+        <a href="/admin">Login / manage the recipe listings</a>
+      </p>
+    </div>
+  );
+  res.render("home", { generatedHTML });
 });
 
 app.get("/admin", (req, res) => {
