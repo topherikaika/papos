@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import Axios from "axios";
 
 function App() {
-  const recipes = [];
+  const [recipes, setRecipes] = useState([]);
   return (
     <div>
       <h1>Hey</h1>
