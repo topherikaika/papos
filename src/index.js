@@ -10,6 +10,7 @@ function App() {
       const response = await Axios.get("/api/recipes");
       setRecipes(response.data);
     }
+    go();
   }, []);
   return (
     <div>
