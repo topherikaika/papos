@@ -8,6 +8,9 @@ const fse = require("fs-extra");
 const sharp = require("sharp");
 let db;
 const path = require("path");
+const React = require("react");
+const ReactDOMServer = require("react-dom/server");
+const RecipeCard = require("./src/components/RecipeCard").default;
 
 //when the app first launches make sure the public/uploaded-photos exists
 fse.ensureDirSync(path.join("public", "uploaded-photos"));
