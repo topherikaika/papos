@@ -1,11 +1,13 @@
 const { MongoClient, ObjectId } = require("mongodb");
 const express = require("express");
-let db;
 const uri = "mongodb+srv://memorias:memorias123@cluster0.kohzkj0.mongodb.net/papos?retryWrites=true&w=majority&authSource=admin";
 const app = express();
 const multer = require("multer");
 const upload = multer();
 const sanitizeHTML = require("sanitize-html");
+const fse = require("fs-extra");
+const sharp = require("sharp");
+let db;
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
