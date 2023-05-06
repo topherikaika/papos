@@ -17,6 +17,11 @@ app.get("/admin", (req, res) => {
   res.render("admin");
 });
 
+app.get("/api/recipes", async (req, res) => {
+  const allRecipes = await db.collection("recipes").find().toArray();
+  res.json(allRecipes);
+});
+
 async function start() {
   const cloud = new MongoClient(uri);
   await cloud.connect();
