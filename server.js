@@ -27,14 +27,14 @@ app.get("/", async (req, res) => {
   const allRecipes = await db.collection("recipes").find().toArray();
   const generatedHTML = ReactDOMServer.renderToString(
     <div className="container">
-      <div className="recipe-grid mb-3">
-        {allRecipes.map(recipe => {
-          <RecipeCard key={recipe._id} name={recipe.name} type={recipe.type} photo={recipe.photo} id={recipe._id} readOnly={true} />;
-        })}
-      </div>
       <p>
         <a href="/admin">Login / manage the recipe listings</a>
       </p>
+      <div className="recipe-grid mb-3">
+        {allRecipes.map(recipe => (
+          <RecipeCard key={recipe._id} name={recipe.name} type={recipe.type} photo={recipe.photo} id={recipe._id} readOnly={true} />
+        ))}
+      </div>
     </div>
   );
   res.render("home", { generatedHTML });
