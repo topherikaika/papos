@@ -10,5 +10,13 @@ function App() {
   );
 }
 
+function RecipeCard(props) {
+  return (
+    <p>
+      {props.name} e {props.type}
+    </p>
+  );
+}
+
 const root = createRoot(document.querySelector("#app"));
 root.render(<App />);
