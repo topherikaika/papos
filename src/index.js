@@ -4,12 +4,19 @@ import Axios from "axios";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    async function go() {
+      const response = await Axios.get("/api/recipes");
+      setRecipes(response.data);
+    }
+  }, []);
   return (
     <div>
       <h1>Hey</h1>
       <p>This is REACT</p>
       {recipes.map(function (recipe) {
-        return <AnimalCard name={recipe.name} type={recipe.type} />;
+        return <RecipeCard name={recipe.name} type={recipe.type} />;
       })}
     </div>
   );
