@@ -3,6 +3,9 @@ const express = require("express");
 let db;
 const uri = "mongodb+srv://memorias:memorias123@cluster0.kohzkj0.mongodb.net/papos?retryWrites=true&w=majority&authSource=admin";
 const app = express();
+const multer = require("multer");
+const upload = multer();
+
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
