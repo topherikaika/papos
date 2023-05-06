@@ -5,6 +5,7 @@ const uri = "mongodb+srv://memorias:memorias123@cluster0.kohzkj0.mongodb.net/pap
 const app = express();
 app.set("view engine", "ejs");
 app.set("views", "./views");
+app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
   const allRecipes = await db.collection("recipes").find().toArray();
