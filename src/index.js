@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import Axios from "axios";
 /* COMPONENTS */
 import CreateNewForm from "./components/CreateNewForm";
+import RecipeCard from "./components/RecipeCard";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -16,12 +17,16 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>HEY</h1>
-      <p>This is REACT</p>
-      {recipes.map(function (recipe) {
-        return <RecipeCard name={recipe.name} type={recipe.type} />;
-      })}
+    <div className="container">
+      <p>
+        <a href="/">&laquo; Back to homepage</a>
+      </p>
+      <CreateNewForm setRecipes={setRecipes} />
+      <div className="animal-grid">
+        {recipes.map(function (recipe) {
+          return <RecipeCard key={recipe._id} name={recipe.name} type={recipe.type} photo={recipe.photo} id={recipe._id} setRecipes={setRecipes} />;
+        })}
+      </div>
     </div>
   );
 }
