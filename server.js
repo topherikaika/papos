@@ -57,6 +57,22 @@ app.delete("/recipe/:id", async (req, res) => {
   res.send("Removed");
 });
 
+app.post("/update-recipe", upload.single("photo"), ourCleanup, async (req, res) => {
+  if (req.file) {
+    //if uploading new photo
+    const photofilename = `${Date.now()}.jpg`;
+    await sharp(req.file.buffer).resize(844, 456).jpeg({ quality: 60 }).toFile(path.join("public", "uploaded-photos", photofilename));
+    req.cleanData.photo = photofilename;
+    const info = await db.collection("recipes").findOneAndUpdate({ _id: new ObjectId(req.body._id) }, { $set: req.cleanData });
+    if (info.value.photo) {
+      fse.remove(path.join("public", "uploaded-photos", info.value.photo));
+    }
+    res.send(photofilename);
+  } else {
+    //if not uploading photo
+  }
+});
+
 function ourCleanup(req, res, next) {
   if (typeof req.body.name != "string") req.body.name = "";
   if (typeof req.body.type != "string") req.body.type = "";
