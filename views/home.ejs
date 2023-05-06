@@ -1,1 +1,6 @@
 <h1>Benvido a papos</h1>
+<ul>
+  <% allRecipes.forEach(function(recipe) => { %>
+  <li><%= recipe.name%> - <%=recipe.type %></li>
+  <% }) %>
+</ul>
