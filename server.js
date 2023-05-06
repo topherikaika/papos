@@ -1,14 +1,18 @@
 const { MongoClient, ObjectId } = require("mongodb");
 const express = require("express");
 const uri = "mongodb+srv://memorias:memorias123@cluster0.kohzkj0.mongodb.net/papos?retryWrites=true&w=majority&authSource=admin";
-const app = express();
 const multer = require("multer");
 const upload = multer();
 const sanitizeHTML = require("sanitize-html");
 const fse = require("fs-extra");
 const sharp = require("sharp");
 let db;
+const path = require("path");
 
+//when the app first launches make sure the public/uploaded-photos exists
+fse.ensureDirSync(path.join("public", "uploaded-photos"));
+
+const app = express();
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
