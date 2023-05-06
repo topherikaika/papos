@@ -9,7 +9,7 @@ app.set("views", "./views");
 app.get("/", async (req, res) => {
   const allRecipes = await db.collection("recipes").find().toArray();
   console.log(allRecipes);
-  res.render("home");
+  res.render("home", { allRecipes });
 });
 
 app.get("/admin", (req, res) => {
