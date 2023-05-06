@@ -43,6 +43,8 @@ function ourCleanup(req, res, next) {
     name: sanitizeHTML(req.body.name.trim(), { allowedTags: [], allowedAttributes: {} }),
     type: sanitizeHTML(req.body.type.trim(), { allowedTags: [], allowedAttributes: {} })
   };
+
+  next();
 }
 
 async function start() {
