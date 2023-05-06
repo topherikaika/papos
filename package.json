@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "run-p ourserver ourwebpack",
-    "ourserver": "nodemon server",
+    "ourserver": "nodemon server-compiled",
     "ourwebpack": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
