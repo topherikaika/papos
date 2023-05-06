@@ -22,6 +22,11 @@ app.get("/api/recipes", async (req, res) => {
   res.json(allRecipes);
 });
 
+app.post("/create-recipe", async (req, res) => {
+  console.log(req.body);
+  res.send("Thank you");
+});
+
 async function start() {
   const cloud = new MongoClient(uri);
   await cloud.connect();
