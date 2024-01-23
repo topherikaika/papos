@@ -18,11 +18,11 @@ function App() {
 
   return (
     <div className="container">
-      <h1>ADMIN</h1>
+      <h1>Admin Page</h1>
+      <CreateNewForm setRecipes={setRecipes} />
       <p>
         <a href="/">&laquo; Back to homepage</a>
       </p>
-      <CreateNewForm setRecipes={setRecipes} />
       <div className="recipe-grid">
         {recipes.map(function (recipe) {
           return <RecipeCard key={recipe._id} name={recipe.name} type={recipe.type} photo={recipe.photo} id={recipe._id} setRecipes={setRecipes} />;

@@ -27,10 +27,11 @@ app.get("/", async (req, res) => {
   const allRecipes = await db.collection("recipes").find().toArray();
   const generatedHTML = ReactDOMServer.renderToString(
     <div className="container">
+      <h1>Homepage</h1>
       <p>
         <a href="/admin">Login / manage the recipe listings</a>
       </p>
-      {!allAnimals.length && <p>There are no recipes created yet, the admin needs to add a few</p>}
+      {!allRecipes.length && <p>There are no recipes created yet, the admin needs to add a few</p>}
       <div className="recipe-grid mb-3">
         {allRecipes.map(recipe => (
           <RecipeCard key={recipe._id} name={recipe.name} type={recipe.type} photo={recipe.photo} id={recipe._id} readOnly={true} />
